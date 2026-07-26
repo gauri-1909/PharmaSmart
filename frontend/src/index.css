@@ -1,0 +1,618 @@
+/* ── CSS Variables / Design Tokens ─────────────────────────── */
+:root {
+  --brand:         #1D9E75;
+  --brand-dark:    #0F6E56;
+  --brand-darkest: #085041;
+  --brand-bg:      #E1F5EE;
+
+  --amber-bg:      #FAEEDA;
+  --amber-text:    #633806;
+  --amber-dark:    #854F0B;
+
+  --red-bg:        #FCEBEB;
+  --red-text:      #791F1F;
+
+  --blue-bg:       #E6F1FB;
+  --blue-text:     #185FA5;
+
+  --gray-bg:       #F1EFE8;
+  --gray-text:     #5F5E5A;
+
+  --teal-bg:       #E1F5EE;
+  --teal-text:     #085041;
+
+  --white:         #ffffff;
+  --border:        #e2e8f0;
+  --text-main:     #1a202c;
+  --text-muted:    #718096;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f7f9fc;
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  padding: 40px 0 28px;
+}
+
+.header-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.header-logo-row svg {
+  color: var(--brand);
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brand-darkest);
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Search Bar ─────────────────────────────────────────────── */
+.search-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.search-wrapper input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--white);
+}
+
+.search-wrapper input:focus {
+  border-color: var(--brand);
+}
+
+.search-wrapper button {
+  padding: 12px 24px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-wrapper button:hover {
+  background: var(--brand-dark);
+}
+
+/* ── Quick Search Pills ─────────────────────────────────────── */
+.quick-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.quick-pills span {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 4px;
+}
+
+.pill {
+  padding: 5px 12px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--brand-dark);
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.pill:hover {
+  background: var(--brand-bg);
+  border-color: var(--brand);
+}
+
+/* ── Disclaimer Banner ──────────────────────────────────────── */
+.disclaimer {
+  background: var(--amber-bg);
+  border: 1px solid #f0d5a0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.disclaimer svg {
+  color: var(--amber-dark);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.disclaimer p {
+  font-size: 13px;
+  color: var(--amber-text);
+  line-height: 1.5;
+}
+
+.disclaimer p strong {
+  color: var(--amber-dark);
+}
+
+/* ── Section Label ──────────────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ── Medicine Card ──────────────────────────────────────────── */
+.medicine-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.medicine-card-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.medicine-card-salt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.medicine-card-salt svg {
+  color: var(--text-muted);
+}
+
+/* ── Badges ─────────────────────────────────────────────────── */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-blue   { background: var(--blue-bg);  color: var(--blue-text); }
+.badge-gray   { background: var(--gray-bg);  color: var(--gray-text); }
+.badge-amber  { background: var(--amber-bg); color: var(--amber-text); }
+.badge-green  { background: var(--brand-bg); color: var(--brand-darkest); }
+.badge-teal   { background: var(--teal-bg);  color: var(--teal-text); }
+
+/* ── Used For ───────────────────────────────────────────────── */
+.used-for {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.used-for span {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 14px 0;
+}
+
+/* ── Price Row ──────────────────────────────────────────────── */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-main {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--brand-darkest);
+}
+
+.price-unit {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.manufacturer {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Savings Banner ─────────────────────────────────────────── */
+.savings-banner {
+  background: var(--brand-bg);
+  border: 1px solid #a8dfc9;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.savings-banner svg {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+.savings-banner-text p:first-child {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brand-darkest);
+}
+
+.savings-banner-text p:last-child {
+  font-size: 12px;
+  color: var(--brand-dark);
+}
+
+/* ── Alternative Card ───────────────────────────────────────── */
+.alt-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.alt-card.best-value {
+  border-color: var(--brand);
+}
+
+.best-value-bar {
+  background: var(--brand);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alt-card-body {
+  padding: 16px;
+}
+
+.alt-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.alt-card-left {
+  flex: 1;
+}
+
+.alt-card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.alt-card-manufacturer {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.alt-card-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.alt-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.alt-price-unit {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.savings-chip {
+  display: inline-block;
+  background: var(--brand-bg);
+  color: var(--brand-darkest);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+/* ── Expand Button ──────────────────────────────────────────── */
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--brand-dark);
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+  margin-top: 10px;
+}
+
+.expand-btn:hover {
+  background: var(--brand-bg);
+  border-color: var(--brand);
+}
+
+/* ── Expanded Details ───────────────────────────────────────── */
+.expanded-details {
+  border-top: 1px solid var(--border);
+  padding: 14px 16px;
+  background: #fafafa;
+}
+
+/* ── Bioequivalence Bars ────────────────────────────────────── */
+.bioequiv-section {
+  margin-bottom: 14px;
+}
+
+.bioequiv-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.bioequiv-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.bioequiv-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.bioequiv-bar-bg {
+  flex: 1;
+  height: 7px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bioequiv-bar-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.bioequiv-pct {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-darkest);
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Side Effect Grid ───────────────────────────────────────── */
+.side-effects-section {
+  margin-top: 4px;
+}
+
+.side-effects-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.severity-legend {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-dot.common  { background: #d97706; }
+.legend-dot.serious { background: #dc2626; }
+.legend-dot.rare    { background: #9ca3af; }
+
+.side-effects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.side-effect-pill {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.side-effect-pill.common  { background: var(--amber-bg); color: var(--amber-text); }
+.side-effect-pill.serious { background: var(--red-bg);   color: var(--red-text); }
+.side-effect-pill.rare    { background: var(--gray-bg);  color: var(--gray-text); }
+
+/* ── Empty / Loading / Error States ────────────────────────── */
+.state-box {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.state-box svg {
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.state-box p {
+  font-size: 15px;
+}
+
+.state-box p.sub {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* Spinner */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error box */
+.error-box {
+  background: var(--red-bg);
+  color: var(--red-text);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Search results dropdown */
+.search-results-list {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: var(--brand-bg);
+}
+
+.search-result-item p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.search-result-item span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .header h1        { font-size: 22px; }
+  .side-effects-grid { grid-template-columns: 1fr; }
+  .alt-card-header  { flex-direction: column; }
+  .alt-card-right   { text-align: left; }
+}
