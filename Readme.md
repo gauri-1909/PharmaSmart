@@ -87,4 +87,4 @@ pharmacist before switching medicines. This was built as a college project.
 
 ## Live Link
 
-[pharmasmart.vercel.app](https://pharmasmart.vercel.app)
+[pharmasmart.vercel.app](https://pharm-smart.vercel.app)
