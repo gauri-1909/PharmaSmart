@@ -6,7 +6,7 @@ import Disclaimer from '../components/Disclaimer';
 import MedicineCard from '../components/MedicineCard';
 import AlternativeCard from '../components/AlternativeCard';
 
-const API_BASE = 'http://localhost:8000/api/medicines';
+const API_BASE = 'https://pharmsmart-backend.onrender.com/api/medicines';
 
 const QUICK_SEARCHES = [
   'Crocin 500mg',
