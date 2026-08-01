@@ -13,7 +13,7 @@ router.get('/search', async (req, res) => {
   try {
     const q = req.query.q;
 
-    // Validate: q must be present and non-empty
+    
     if (!q || q.trim() === '') {
       return res.status(400).json({ error: 'Search query required' });
     }
@@ -37,16 +37,12 @@ router.get('/search', async (req, res) => {
 });
 
 
-// ─────────────────────────────────────────────────────────────
-// GET /api/medicines/:id
-// Returns full details of one medicine by MongoDB _id
-// ─────────────────────────────────────────────────────────────
+
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validate that id is a valid MongoDB ObjectId format
-    // Without this, mongoose throws a CastError for invalid ids
+    
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ error: 'Medicine not found' });
     }
@@ -66,21 +62,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-// ─────────────────────────────────────────────────────────────
-// GET /api/medicines/:id/alternatives
-// Returns cheaper alternatives for the given medicine
-//
-// MATCHING RULE:
-// Two medicines are alternatives if ALL THREE match:
-//   - activeSalt  (same active ingredient, e.g. "Paracetamol")
-//   - strength    (same dose, e.g. "500mg") — NEVER cross-strength
-//   - form        (same form, e.g. "Tablet")
-// 500mg ≠ 650mg even if the salt is the same. This is intentional
-// and medically important — do NOT remove this constraint.
-//
-// Each result includes a calculated savingsPercent field.
-// Results are sorted by price ascending (cheapest first).
-// ─────────────────────────────────────────────────────────────
+
 router.get('/:id/alternatives', async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,9 +80,7 @@ router.get('/:id/alternatives', async (req, res) => {
     }
 
     // Step 2: Find all medicines with same activeSalt + strength + form
-    // Exclude the original medicine itself using $ne (not equal)
-    // Use case-insensitive regex for activeSalt and form to handle
-    // any minor casing inconsistencies in the database
+ 
    const alternatives = await Medicine.find({
   _id: { $ne: original._id },
   activeSalt: { $regex: `^${escapeRegex(original.activeSalt)}$`, $options: 'i' },
@@ -109,15 +89,15 @@ router.get('/:id/alternatives', async (req, res) => {
 }).sort({ price: 1 });
 
     // Step 3: Add savingsPercent to each alternative
-    // Formula: how much % cheaper is this alternative vs the original?
-    // If original costs ₹100 and alternative costs ₹60 → saves 40%
+
+    
     const alternativesWithSavings = alternatives.map(alt => {
       const savingsPercent = original.price > alt.price
         ? Math.round(((original.price - alt.price) / original.price) * 100)
         : 0; // if alternative is more expensive, savings = 0
 
       return {
-        ...alt.toObject(), // convert mongoose doc to plain JS object
+        ...alt.toObject(), 
         savingsPercent
       };
     });
