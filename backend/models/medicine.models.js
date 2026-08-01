@@ -38,23 +38,15 @@ const medicineSchema = new mongoose.Schema({
     Duration:      { type: Number, default: null }
   },
 
-  // ── Optional note shown on alternative card ──────────────
   note: { type: String, default: null }
 
-}, { timestamps: true });  // adds createdAt and updatedAt automatically
+}, { timestamps: true });  
 
 
-// ── Compound Index ───────────────────────────────────────────────────────────
-// This makes the "find alternatives" query fast.
-// Two medicines are alternatives if activeSalt + strength + form all match.
-// We NEVER match across different strengths (500mg ≠ 650mg) — this is enforced
-// by the route query, and this index makes that query efficient.
+
 medicineSchema.index({ activeSalt: 1, strength: 1, form: 1 });
 
 
-// ── Pre-save hook ────────────────────────────────────────────────────────────
-// Normalize activeSalt and strength before saving so matching is reliable.
-// e.g. " paracetamol " and "Paracetamol" will both become "Paracetamol"
 medicineSchema.pre('save', function(next) {
   if (this.activeSalt) {
     this.activeSalt = this.activeSalt.trim();
