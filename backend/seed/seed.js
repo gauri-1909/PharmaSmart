@@ -1,6 +1,4 @@
-/* DEMO DATA ONLY — not verified pharmaceutical data.
-   For educational/academic purposes only.
-   Always consult a licensed doctor or pharmacist. */
+
 
 const mongoose = require('mongoose');
 const Medicine = require('../models/medicine.models.js');
@@ -1181,9 +1179,7 @@ const medicines = [
 
 ];
 
-// ─────────────────────────────────────────────────────────────
-// SEED FUNCTION
-// ─────────────────────────────────────────────────────────────
+
 async function seedDB() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
